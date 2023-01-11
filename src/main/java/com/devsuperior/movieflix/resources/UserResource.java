@@ -1,4 +1,4 @@
-package com.devsuperior.movieflix.resource;
+package com.devsuperior.movieflix.resources;
 
 import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.services.UserService;

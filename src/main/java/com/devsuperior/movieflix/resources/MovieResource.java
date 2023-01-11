@@ -1,7 +1,7 @@
-package com.devsuperior.movieflix.resource;
+package com.devsuperior.movieflix.resources;
 
-import com.devsuperior.movieflix.dto.GenreDTO;
-import com.devsuperior.movieflix.services.GenreService;
+import com.devsuperior.movieflix.dto.MovieDTO;
+import com.devsuperior.movieflix.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/genres")
-public class GenreResource {
+@RequestMapping(value="/movies")
+public class MovieResource {
 
     @Autowired
-    private GenreService service;
+    private MovieService service;
 
     @GetMapping
-    public ResponseEntity<Page<GenreDTO>> findAll(@PageableDefault(size = 12, sort={"name"})Pageable pageable){
-        Page<GenreDTO> page = service.findAll(pageable);
-        return ResponseEntity.ok().body(page);
-
-    }
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<GenreDTO> findById(@PathVariable Long id){
-        GenreDTO dto = service.findById(id);
+    public ResponseEntity<Page<MovieDTO>> findAll(@PageableDefault(size = 12, sort={"name"})Pageable pageable){
+        Page<MovieDTO> dto = service.findAll(pageable);
         return ResponseEntity.ok().body(dto);
-
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<MovieDTO> findById(@PathVariable Long id){
+        MovieDTO dto = service.findById(id);
+        return ResponseEntity.ok().body(dto);
+    }
+
 }

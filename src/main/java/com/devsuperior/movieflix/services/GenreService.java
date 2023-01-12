@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GenreService {
@@ -19,8 +21,8 @@ public class GenreService {
     private GenreRepository genreRepository;
 
     @Transactional(readOnly = true)
-    public Page<GenreDTO> findAll(Pageable pageable) {
-        return genreRepository.findAll(pageable).map(GenreDTO::new);
+    public List<GenreDTO> findAll() {
+        return genreRepository.findAll().stream().map(GenreDTO::new).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)

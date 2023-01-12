@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/genres")
 public class GenreResource {
@@ -20,8 +22,8 @@ public class GenreResource {
     private GenreService service;
 
     @GetMapping
-    public ResponseEntity<Page<GenreDTO>> findAll(@PageableDefault(size = 12, sort={"name"})Pageable pageable){
-        Page<GenreDTO> page = service.findAll(pageable);
+    public ResponseEntity<List<GenreDTO>> findAll(){
+        List<GenreDTO> page = service.findAll();
         return ResponseEntity.ok().body(page);
 
     }

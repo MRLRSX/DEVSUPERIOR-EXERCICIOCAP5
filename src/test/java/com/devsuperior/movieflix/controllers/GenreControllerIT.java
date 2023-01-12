@@ -50,7 +50,7 @@ public class GenreControllerIT {
 
 		result.andExpect(status().isUnauthorized());
 	}
-	
+	/**Eu havia feito com Page deu problema quando ordem*/
 	@Test
 	public void findAllShouldReturnAllGenresWhenVisitorAuthenticated() throws Exception {
 
@@ -62,12 +62,12 @@ public class GenreControllerIT {
 					.contentType(MediaType.APPLICATION_JSON));
 
 		result.andExpect(status().isOk());
-		result.andExpect(jsonPath("$[0].id").value(1L));
-		result.andExpect(jsonPath("$[0].name").value("Comédia"));
-		result.andExpect(jsonPath("$[1].id").value(2L));
-		result.andExpect(jsonPath("$[1].name").value("Terror"));
-		result.andExpect(jsonPath("$[2].id").value(3L));
-		result.andExpect(jsonPath("$[2].name").value("Drama"));
+		result.andExpect(jsonPath("$.[0].id").value(1L));
+		result.andExpect(jsonPath("$.[0].name").value("Comédia"));
+		result.andExpect(jsonPath("$.[1].id").value(2L));
+		result.andExpect(jsonPath("$.[1].name").value("Terror"));
+		result.andExpect(jsonPath("$.[2].id").value(3L));
+		result.andExpect(jsonPath("$.[2].name").value("Drama"));
 	}
 	
 	@Test
@@ -81,11 +81,11 @@ public class GenreControllerIT {
 					.contentType(MediaType.APPLICATION_JSON));
 
 		result.andExpect(status().isOk());
-		result.andExpect(jsonPath("$[0].id").value(1L));
-		result.andExpect(jsonPath("$[0].name").value("Comédia"));
-		result.andExpect(jsonPath("$[1].id").value(2L));
-		result.andExpect(jsonPath("$[1].name").value("Terror"));
-		result.andExpect(jsonPath("$[2].id").value(3L));
-		result.andExpect(jsonPath("$[2].name").value("Drama"));		
+		result.andExpect(jsonPath("$.[0].id").value(1L));
+		result.andExpect(jsonPath("$.[0].name").value("Comédia"));
+		result.andExpect(jsonPath("$.[1].id").value(2L));
+		result.andExpect(jsonPath("$.[1].name").value("Terror"));
+		result.andExpect(jsonPath("$.[2].id").value(3L));
+		result.andExpect(jsonPath("$.[2].name").value("Drama"));
 	}
 }
